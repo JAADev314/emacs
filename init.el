@@ -9,9 +9,13 @@
 (setq my-emacs-directory
       (cond
        ((eq system-type 'windows-nt) "~/emacs/")
-       (t "/emacs/"))) 
+       (t "/emacs/")))
+(setq emacs-custom-directory
+      (cond
+       ((eq system-type 'windows-nt) "~/.emacs.d/custom.el")
+       (t "/emacs/custom.el")))
 
-(setq custom-file (concat my-emacs-directory "custom.el"))
+(setq custom-file 'emacs-custom-directory)
 (load-file custom-file)
 (load (concat my-emacs-directory "rc.el"))
 (load (concat my-emacs-directory "myfunctions.el"))
