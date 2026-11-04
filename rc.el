@@ -1,9 +1,5 @@
 ;;; -*- lexical-binding: t; -*-
 ;; from rexim https://github.com/rexim/dotfiles/blob/master/.emacs.rc/rc.el
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/") t)
-;; (add-to-list 'package-archives
-;;              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
 (defvar rc/package-contents-refreshed nil)
 

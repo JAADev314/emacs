@@ -1,5 +1,11 @@
 ;;; -*- lexical-binding: t; -*-
 (require 'package)
+
+(dolist (archive '(("melpa" . "https://melpa.org/packages/")
+		   ("org" . "https://orgmode.org/elpa/")
+		   ))
+  (add-to-list 'package-archives archive))
+
 (setq custom-file "/emacs/custom.el")
 (load-file custom-file)
 (load "/emacs/rc.el")
@@ -51,3 +57,23 @@
 (global-set-key (kbd "C-,") 'duplicate-and-move-down)
 (global-set-key (kbd "C-c l") 'mark-whole-line)
 (global-set-key (kbd "C-c i") #'open-init-el)
+
+;; org-mode
+(rc/require 'org)
+(rc/require 'org-bullets)
+(rc/require 'visual-fill-column)
+        
+
+(defun org-setup ()
+  (setq org-bullets-bullet-list '("◉" "○" "△" "◇" "⬡" "▪")) ;; see EOF for other possible characters
+  (setq org-ellipsis " ▾")
+  (setq visual-fill-column-width 100)
+  (setq visual-fill-column-center-text t)
+  (org-bullets-mode 1)
+  (visual-fil-column-mode 1)
+  )
+
+
+(add-hook 'org-mode-hook #'org-setup)
+
+;; ● ○ ◉ ◎ ◌ ◍ ⦿ ⊙ ⊚ | ▲ △ ▼ ▽ ◀ ◁ ▶ ▷ ◢ ◣ | ◆ ◇ ◈ ◊ ⬖ ⬗ | ■ □ ▪ ▫ ▣ ▤ ▥ ▦ | ⬟ ⬠ ⬡ ⬢ | ✦ ✧ ✶ ✳ ✴ ✺ ✹ ❖
