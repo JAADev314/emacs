@@ -15,7 +15,7 @@
        ((eq system-type 'windows-nt) "~/.emacs.d/custom.el")
        (t "/emacs/custom.el")))
 
-(setq custom-file 'emacs-custom-directory)
+(setq custom-file emacs-custom-directory)
 (load-file custom-file)
 (load (concat my-emacs-directory "rc.el"))
 (load (concat my-emacs-directory "myfunctions.el"))
