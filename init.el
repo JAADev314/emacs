@@ -6,10 +6,16 @@
 		   ))
   (add-to-list 'package-archives archive))
 
-(setq custom-file "/emacs/custom.el")
+(setq my-emacs-directory
+      (cond
+       ((eq system-type 'windows-nt) "~/emacs/")
+       (t "/emacs/"))) 
+
+(setq custom-file (concat my-emacs-directory "custom.el"))
 (load-file custom-file)
-(load "/emacs/rc.el")
-(load "/emacs/myfunctions.el")
+(load (concat my-emacs-directory "rc.el"))
+(load (concat my-emacs-directory "myfunctions.el"))
+
 (package-initialize)
 
 ;; visuals
@@ -70,7 +76,8 @@
   (setq visual-fill-column-width 100)
   (setq visual-fill-column-center-text t)
   (org-bullets-mode 1)
-  (visual-fil-column-mode 1)
+  (visual-fil-column-mode 1) ;; padding left and right
+  (visual-line-mode 1) ;; word wrap
   )
 
 
